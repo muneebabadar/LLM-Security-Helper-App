@@ -9,14 +9,12 @@ load_dotenv()
 # Page configuration
 st.set_page_config(
     page_title="LLM Security Helper",
-    page_icon="🔒",
     layout="wide"
 )
 
 # Title and description
-st.title("🔒 LLM Security Helper")
+st.title("LLM Security Helper")
 st.markdown("""
-This application uses Google Gemini AI to analyze security vulnerabilities in:
 1. **Code Security Analysis** - Find vulnerabilities in code snippets
 2. **GenAI App Spec Analysis** - Identify OWASP LLM Top 10 and ATLAS vulnerabilities
 """)
@@ -33,15 +31,6 @@ if not GEMINI_API_KEY or GEMINI_API_KEY == "":
     st.error("⚠️ **API Key Not Configured!**")
     st.warning("""
     Please configure your Gemini API key:
-    
-    1. Create a file named `.env` in the same folder as app.py
-    2. Add this line to the .env file:
-       GEMINI_API_KEY=your-api-key-here
-    3. Save the file
-    4. Restart the app
-    
-    **Get your free API key from:**
-    https://aistudio.google.com/app/apikey
     """)
     st.stop()
 
@@ -118,11 +107,11 @@ except Exception as e:
     st.stop()
 
 # Tabs for two different functionalities
-tab1, tab2 = st.tabs(["🐛 Code Security Analysis", "📋 GenAI Spec Vulnerability Analysis"])
+tab1, tab2 = st.tabs(["Code Security Analysis", "GenAI Spec Vulnerability Analysis"])
 
 # ==================== PART 1: Code Security Analysis ====================
 with tab1:
-    st.header("Part 1: Code → Security Fixes")
+    st.header("Security Fixes")
     st.markdown("Paste your code below to identify security vulnerabilities and get recommended fixes.")
     
     # Code input
@@ -197,7 +186,7 @@ Focus ONLY on security issues, not general code quality or refactoring suggestio
 
 # ==================== PART 2: GenAI Spec Analysis ====================
 with tab2:
-    st.header("Part 2: GenAI App Specs → OWASP LLM & ATLAS Vulnerabilities")
+    st.header("OWASP LLM & ATLAS Vulnerabilities")
     st.markdown("Describe your GenAI/Agentic application to identify potential security vulnerabilities.")
     
     # Spec input
@@ -296,12 +285,3 @@ Be specific, actionable, and clear. Every recommendation should be directly appl
                 except Exception as e:
                     st.error(f"Error during analysis: {str(e)}")
                     st.info("Please check your API key and internet connection.")
-
-# Footer
-st.markdown("---")
-st.markdown("""
-<div style='text-align: center'>
-    <p><strong>LLM Security Helper</strong> | Powered by Google Gemini AI</p>
-    <p style='font-size: 0.8em'>Always review AI-generated security recommendations with human expertise</p>
-</div>
-""", unsafe_allow_html=True)
