@@ -8,16 +8,12 @@ load_dotenv()
 
 # Page configuration
 st.set_page_config(
-    page_title="LLM Security Helper",
+    page_title="CS 435 GenAI: LLM Security Helper",
     layout="wide"
 )
 
 # Title and description
-st.title("LLM Security Helper")
-st.markdown("""
-1. **Code Security Analysis** - Find vulnerabilities in code snippets
-2. **GenAI App Spec Analysis** - Identify OWASP LLM Top 10 and ATLAS vulnerabilities
-""")
+st.title("CS 435 GenAI: LLM Security Helper")
 
 # Get API key from environment variable
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -118,11 +114,7 @@ with tab1:
     code_input = st.text_area(
         "Enter your code here:",
         height=300,
-        placeholder="""Example:
-def login(username, password):
-    query = "SELECT * FROM users WHERE username='" + username + "' AND password='" + password + "'"
-    cursor.execute(query)
-    return cursor.fetchone()
+        placeholder="""
 """,
         key="code_input"
     )
@@ -180,14 +172,7 @@ with tab2:
     spec_input = st.text_area(
         "Describe your GenAI/Agentic application:",
         height=300,
-        placeholder="""Example:
-We are building a customer support chatbot that:
-- Accesses our customer database to retrieve order information
-- Allows users to update their shipping addresses
-- Can process refund requests up to $500 without human approval
-- Uses RAG to search internal knowledge base documents
-- Integrates with our payment processing API
-- Stores conversation history for quality monitoring
+        placeholder="""
 """,
         key="spec_input"
     )
