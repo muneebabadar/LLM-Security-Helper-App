@@ -127,12 +127,6 @@ def login(username, password):
         key="code_input"
     )
     
-    # Language selector
-    language = st.selectbox(
-        "Select programming language:",
-        ["Python", "JavaScript", "Java", "C#", "PHP", "Ruby", "Go", "SQL", "Other"]
-    )
-    
     if st.button("🔍 Analyze Code Security", key="analyze_code"):
         if not code_input.strip():
             st.warning("Please enter some code to analyze.")
@@ -142,11 +136,7 @@ def login(username, password):
                     # Create the prompt for code analysis
                     prompt = f"""You are a security expert analyzing code for vulnerabilities. 
 
-Analyze the following {language} code and identify ALL security vulnerabilities:
-
-```{language.lower()}
-{code_input}
-```
+Analyze the following code and identify ALL security vulnerabilities:
 
 Provide your analysis in the following format:
 
@@ -165,9 +155,6 @@ For each vulnerability, provide:
 ### Fix for [Vulnerability Name]
 - **Solution**: [Detailed explanation of how to fix it]
 - **Secure Code Example**:
-```{language.lower()}
-[Provide the corrected, secure version of the code]
-```
 - **Additional Best Practices**: [Any related security recommendations]
 
 Focus ONLY on security issues, not general code quality or refactoring suggestions."""
@@ -205,13 +192,6 @@ We are building a customer support chatbot that:
         key="spec_input"
     )
     
-    # App type selector
-    app_type = st.selectbox(
-        "Application Type:",
-        ["Chatbot/Virtual Assistant", "Code Generation Tool", "Content Generator", 
-         "Data Analysis Agent", "RAG-based System", "Multi-Agent System", "Other"]
-    )
-    
     if st.button("🔍 Analyze Vulnerabilities", key="analyze_spec"):
         if not spec_input.strip():
             st.warning("Please enter your application specifications.")
@@ -221,7 +201,6 @@ We are building a customer support chatbot that:
                     # Create the prompt for spec analysis
                     prompt = f"""You are a GenAI security expert specializing in OWASP LLM Top 10 and ATLAS (Adversarial Threat Landscape for AI Systems) frameworks.
 
-Analyze the following {app_type} specification for security vulnerabilities:
 
 APPLICATION SPECIFICATION:
 {spec_input}
