@@ -15,6 +15,7 @@ st.set_page_config(
 # Title and description
 st.title("CS 435 GenAI: LLM Security Helper")
 
+
 # Get API key from environment variable
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
